@@ -1,0 +1,35 @@
+spring:
+    application:
+        name: accounts
+    profiles:
+        active: production
+    datasource:
+        url: ${accounts.datasource.url}
+        username: ${accounts.datasource.username}
+        password: ${accounts.datasource.password}
+        driver-class-name: ${accounts.datasource.driver-class-name}
+    jpa:
+        properties:
+            hibernate:
+                dialect: ${accounts.jpa.properties.hibernate.dialect}
+        database: ${accounts.jpa.database}
+        show-sql: ${accounts.jpa.show-sql}
+        hibernate:
+            ddl-auto: ${accounts.jpa.hibernate.ddl-auto}
+
+# ACTUATOR INFO
+info:
+    app:
+        name: "Accounts"
+        version: "0.0.1"
+        profile: ${spring.profiles.active}
+    serverInfo:
+        port: ${accounts.server.port}
+application:
+    allow-get-accounts: ${accounts.allow-get-accounts}
+
+eureka:
+    client: ${eureka-client}
+
+server:
+    port: 9999
